@@ -1,0 +1,21 @@
+use cv2
+
+img #ur img
+gray # make it all gray 
+#use the binary thresholding to make the img black and white 
+Threshold=200                  #fixed value so we can compare its between 0 and 255 
+black_pixels=total_pixels-white_pixels
+white_pixels=any pixels abouve 200 
+
+if pixels colse to 255 become white means >Threshold
+white_pixels 
+elif  pixels close to 0 become black means < Threshold
+black_pixels 
+
+#number of  pixels 
+
+total_pixels=white_pixels+black_pixels
+
+#get objects from background 
+we use white pixels to get the objects and the black remain as a background meaning we will use open cv shape detaction on the white shapes only to make detaction easier 
+by finding the countros of each shape and then filtering them by how many form meaning ryctangle cricle trinagle ect ect 
