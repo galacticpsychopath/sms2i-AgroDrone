@@ -9,11 +9,11 @@ steps to download and run this project :
 --------------------------------------------------------------------------  
 
 the result will be like this in test  img : 
-
 I found a Rectangle!
 I found a Rectangle!
 I found a Rectangle!
 total num of products : 3
+
 --------------------------------------------------------------------------
 
 (Note that if we count the number of white pixels we will get the number of shapes, this is the final expected result)
