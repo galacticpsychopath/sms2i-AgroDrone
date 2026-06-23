@@ -1,19 +1,21 @@
-steps to download and run this project : 
+# steps to download and run this project : 
 
-1.open the terminal and run the command : 
-   git clone https://github.com/galacticpsychopath/sms2i-AgroDrone
-   
-2.then run the python script : 
-    python "Binary Threshold Demo.py" 
+### Installation
+1. Clone the repository:
+```bash
+   git clone [https://github.com/galacticpsychopath/sms2i-AgroDrone.git](https://github.com/galacticpsychopath/sms2i-AgroDrone.git) .
+```
+```bash
+pip install opencv-python
+```
 
---------------------------------------------------------------------------  
-
-the result will be like this in test  img : 
-I found a Rectangle!
-I found a Rectangle!
-I found a Rectangle!
-total num of products : 3
-
---------------------------------------------------------------------------
-
-(Note that if we count the number of white pixels we will get the number of shapes, this is the final expected result)
+2. Navigate to the project directory:
+```bash
+   cd sms2i-AgroDrone
+```
+3. Run the application using your Flask environment or open the static files directly in your browser:
+```bash
+   python "Binary Threshold Demo.py"
+   python "objcounting.py"
+   python "livedetection.py"
+```
