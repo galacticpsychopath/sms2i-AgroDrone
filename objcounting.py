@@ -1,7 +1,7 @@
 import cv2 
 
 # step 1 get the vid
-vid = cv2.VideoCapture(r'C:\work\sms2i\sms2i-AgroDrone\testvid.mp4') 
+vid = cv2.VideoCapture(r'C:\work\sms2i\sms2i-AgroDrone\finaltest.mp4') 
 #test on the vid input 
 if not vid.isOpened():
     print("Error opening the vid file ! ")
@@ -29,7 +29,7 @@ while True:
     contours, _ = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     for countor in contours:
     # Only count if the object is large enough to be an object based on the size we set 
-        if cv2.contourArea(countor) > 50: 
+        if cv2.contourArea(countor) > 1300: 
             objects_detected += 1 
 
         if objects_detected > maxobjects:
