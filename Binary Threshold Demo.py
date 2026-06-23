@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread(r'C:\work\sms2i\sms2i-AgroDrone\test2_img.png') #get img 
+img = cv2.imread(r'C:\work\sms2i\sms2i-AgroDrone\infectedplanttest.jpg') #get img 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # make it all gray 
 
 _,binary_map = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY) #(If the pixel > than the threshold make it 255 (white)) 
@@ -14,7 +14,7 @@ black_pixels = total_pixels - white_pixels
 contours, _ = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 shape_name="Unknown"
-product=0
+infection=0
 for points in contours: 
     #this so we skip logos/text so it doesnt count them as objects 
     area = cv2.contourArea(points)
@@ -32,7 +32,7 @@ for points in contours:
         shape_name = "Rectangle"
     else:
         shape_name = "Circle"
-        product=product+1
+        infection=infection+1
 
 
 #output 
@@ -41,4 +41,4 @@ for points in contours:
     if not contours:
         print("No contours found")
 #print total num of products based on test img num 2 !
-print("total num of products :"+" "+ str(product) )
+print("this plant is infected :"+" "+ str(infection) )
