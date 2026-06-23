@@ -1,0 +1,44 @@
+import cv2 
+
+# step 1 get live stream from camera 
+live = cv2.VideoCapture(0)
+    
+if not live.isOpened():
+    print("Error opening the camera!")
+    exit()
+
+while True: 
+    ret, frame = live.read()
+    if not ret:
+        print("Error reading frame!")
+        break
+
+    objects_detected = 0 
+    
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) 
+    _, binary_map = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY_INV) 
+
+    # step 2 shape detection 
+    contours, _ = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    for contour in contours:
+        # Only count and DRAW if the object is large enough
+        if cv2.contourArea(contour) > 1000: 
+            objects_detected += 1 
+            
+            # HIGHLIGHT: Draw a green outline around the detected object
+            # -1 means draw all contours, (0, 255, 0) is green, 3 is thickness
+            cv2.drawContours(frame, [contour], -1, (0, 255, 0), 3)
+
+    # step 3 output results
+    # Show the count on the frame
+    cv2.putText(frame, f"Objects Detected: {objects_detected}", (20, 50), 
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+    
+    cv2.imshow('Object Detection', frame)
+    
+    if cv2.waitKey(5) & 0xFF == ord('q'):
+        break
+
+live.release()
+cv2.destroyAllWindows()
