@@ -16,14 +16,14 @@ while True:
     objects_detected = 0 
     
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) 
-    _, binary_map = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY_INV) 
+    _, binary_map = cv2.threshold(gray, 130, 255, cv2.THRESH_BINARY_INV) #testing values 127 is the mathematical midpoint of a grayscale image.
 
     # step 2 shape detection 
     contours, _ = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     for contour in contours:
         # Only count and DRAW if the object is large enough
-        if cv2.contourArea(contour) > 1000: 
+        if cv2.contourArea(contour) > 1500: 
             objects_detected += 1 
             
             # HIGHLIGHT: Draw a green outline around the detected object
